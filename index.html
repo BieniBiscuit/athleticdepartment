@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Athletiktraining und Performance Coaching in Hannover - Individuelles Training für Sportler und Teams">
+  <meta name="keywords" content="Athletiktraining, Performance Coaching, Fitness, Hannover, Leistungsdiagnostik">
+  <meta name="theme-color" content="#ff6b35">
+  <title>Athletik Dept - Athletiktraining & Performance Coaching</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./global.css">
+  <link rel="stylesheet" href="./components/header/header.css">
+  <link rel="stylesheet" href="./components/hero/hero.css">
+  <link rel="stylesheet" href="./components/body/body.css">
+  <link rel="stylesheet" href="./components/footer/footer.css">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <!-- Skip Link für Accessibility -->
+  <a href="#main" class="skip-to-main">Zum Hauptinhalt springen</a>
+
+  <!-- ===================================
+       HEADER / NAVIGATION
+       =================================== -->
+  <header class="header">
+    <div class="header-container">
+      <div class="header-logo">
+        <a href="#/" class="logo-link" data-field="nav.logo">Athletik Dept</a>
+      </div>
+      <button class="header-menu-toggle" id="menuToggle" aria-label="Navigation toggle" aria-expanded="false">
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+      </button>
+      <nav class="header-nav" id="headerNav">
+        <ul class="nav-list" data-field="nav.items">
+          <!-- Dynamisch gefüllt von JavaScript -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================================
+       MAIN CONTENT
+       =================================== -->
+  <div id="main">
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+      <div class="hero-background"></div>
+      <div class="hero-content">
+        <h1 class="hero-title" data-field="hero.title">Train Hard. Stay Strong.</h1>
+        <p class="hero-subtitle" data-field="hero.subtitle">Dein Weg zu mehr Fitness beginnt hier.</p>
+        <button class="hero-cta" data-field="hero.cta">Jetzt starten</button>
+      </div>
+    </section>
+
+    <!-- BODY / MAIN CONTENT -->
+    <main class="body">
+      <!-- Intro Section -->
+      <section class="intro-section">
+        <div class="container">
+          <h2 class="intro-heading" data-field="intro.heading">Kennst du das?</h2>
+          <div class="problems-grid" data-field="intro.problems">
+            <!-- Dynamisch gefüllt -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefits Section -->
+      <section class="benefits-section">
+        <div class="container">
+          <h2 class="benefits-heading" data-field="benefits.heading">Was wäre wenn?</h2>
+          <div class="benefits-grid" data-field="benefits.items">
+            <!-- Dynamisch gefüllt -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Approach Section -->
+      <section class="approach-section">
+        <div class="container">
+          <div class="approach-content">
+            <p class="approach-intro" data-field="approach.intro"></p>
+            <p class="approach-cta" data-field="approach.cta"></p>
+            <p class="approach-description" data-field="approach.description"></p>
+            <p class="approach-closing" data-field="approach.closing"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="services-section">
+        <div class="container">
+          <h2 class="section-heading" data-field="services.heading">Unsere Leistungen</h2>
+          <div class="services-grid" data-field="services.items">
+            <!-- Dynamisch gefüllt -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Process Section -->
+      <section id="ablauf" class="process-section">
+        <div class="container">
+          <h2 class="section-heading" data-field="process.heading">Unser Ablauf</h2>
+          <p class="process-intro" data-field="process.intro"></p>
+          
+          <div class="process-stage">
+            <h3>Leistungsdiagnostik</h3>
+            <div class="process-steps" data-field="process.diagnostics">
+              <!-- Dynamisch gefüllt -->
+            </div>
+          </div>
+
+          <div class="process-stage">
+            <h3>Ergebnisanalyse</h3>
+            <div class="process-steps" data-field="process.analysis">
+              <!-- Dynamisch gefüllt -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section class="testimonials-section">
+        <div class="container">
+          <h2 class="section-heading" data-field="testimonials.heading">Was unsere Kunden sagen</h2>
+          <p class="testimonials-intro" data-field="testimonials.intro"></p>
+          <div class="testimonials-grid" data-field="testimonials.items">
+            <!-- Dynamisch gefüllt -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Team Section -->
+      <section id="team" class="team-section">
+        <div class="container">
+          <h2 class="section-heading" data-field="team.heading">Über uns</h2>
+          <p class="team-approach" data-field="team.approach"></p>
+          <div class="team-members" data-field="team.members">
+            <!-- Dynamisch gefüllt -->
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section id="kontakt" class="cta-section">
+        <div class="container">
+          <h2 class="cta-heading" data-field="cta.heading">Interesse geweckt?</h2>
+          <h3 class="cta-subheading" data-field="cta.subheading">Buche jetzt einen Termin</h3>
+          <p class="cta-description" data-field="cta.description"></p>
+          <button class="cta-button" data-field="cta.button">Termin buchen</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===================================
+       FOOTER
+       =================================== -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3 class="footer-company" data-field="footer.companyName">Athletik Dept</h3>
+        <p class="footer-description" data-field="footer.description"></p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Links</h4>
+        <ul class="footer-links" data-field="footer.links.main">
+          <!-- Dynamisch gefüllt -->
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul class="footer-links" data-field="footer.links.legal">
+          <!-- Dynamisch gefüllt -->
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4 data-field="footer.contact.social"></h4>
+        <p class="footer-contact" data-field="footer.contact.city"></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright" data-field="footer.copyright"></p>
+    </div>
+  </footer>
+
+  <!-- ===================================
+       SCRIPTS
+       =================================== -->
+  <script src="./components/header/header.js"></script>
+  <script src="./components/hero/hero.js"></script>
+  <script src="./components/body/body.js"></script>
+  <script src="./components/footer/footer.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
