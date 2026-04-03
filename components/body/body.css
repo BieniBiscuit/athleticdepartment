@@ -97,9 +97,9 @@
 }
 
 .intro-card.active {
-  width: 60%;
+  width: 65%;
   z-index: 10;
-  margin-right: -10%;
+  margin-right: -15%;
 }
 
 .intro-card.active .intro-benefits-heading {
@@ -121,6 +121,7 @@
 
 .benefits-card .intro-benefits-heading {
   color: var(--color-light-50);
+  text-align: right;
 }
 
 .benefits-card .benefits-grid {
@@ -150,9 +151,9 @@
 }
 
 .benefits-card.active {
-  width: 60%;
+  width: 65%;
   z-index: 10;
-  margin-left: -10%;
+  margin-left: -15%;
 }
 
 .benefits-card.active .intro-benefits-heading {
@@ -477,7 +478,7 @@
    ======================================== */
 
 .team-section {
-  padding: 5rem 0;
+  padding: 20px 0;
 }
 
 .team-section .team-approach {
@@ -604,7 +605,13 @@
   }
 
   .intro-benefits-card:not(.active) {
-    display: none;
+    display: block;
+  }
+
+  .intro-card.active,
+  .benefits-card.active {
+    width: 100% !important;
+    margin: 0 !important;
   }
 
   .intro-benefits-heading,
