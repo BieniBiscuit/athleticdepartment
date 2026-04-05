@@ -565,6 +565,15 @@
   transform: translateY(-5px);
 }
 
+/* Team Member Images */
+.team-section .team-member:nth-child(1) .team-member-image {
+  background-image: url('../../assets/images/noah.png');
+}
+
+.team-section .team-member:nth-child(2) .team-member-image {
+  background-image: url('../../assets/images/tony.png');
+}
+
 /* ========================================
    CTA SECTION
    ======================================== */

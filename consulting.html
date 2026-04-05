@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Consulting & Beratung für Athletiktraining - Strategische Begleitung für Teams und Vereine in Hannover">
+  <meta name="keywords" content="Consulting, Athletiktraining, Beratung, Hannover, Teamtraining">
+  <meta name="theme-color" content="#ff6b35">
+  <title>Consulting & Beratung | Athletik Dept</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./global.css">
+  <link rel="stylesheet" href="./components/header/header.css">
+  <link rel="stylesheet" href="./components/hero/hero.css">
+  <link rel="stylesheet" href="./components/consulting/consulting.css">
+  <link rel="stylesheet" href="./components/footer/footer.css">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <!-- Skip Link für Accessibility -->
+  <a href="#main" class="skip-to-main">Zum Hauptinhalt springen</a>
+
+  <!-- ===================================
+       HEADER / NAVIGATION
+       =================================== -->
+  <header class="header">
+    <div class="header-container">
+      <div class="header-logo">
+        <a href="./index.html" class="logo-link" data-field="nav.logo">Athletik Dept</a>
+      </div>
+      <button class="header-menu-toggle" id="menuToggle" aria-label="Navigation toggle" aria-expanded="false">
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+      </button>
+      <nav class="header-nav" id="headerNav">
+        <ul class="nav-list" data-field="nav.items">
+          <!-- Dynamisch gefüllt von JavaScript -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================================
+       MAIN CONTENT
+       =================================== -->
+  <div id="main">
+    <!-- CONSULTING CONTENT -->
+    <div id="consulting-container">
+      <!-- Dynamisch geladen -->
+    </div>
+  </div>
+
+  <!-- ===================================
+       FOOTER
+       =================================== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Dynamisch gefüllt -->
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./main.js"></script>
+  <script src="./components/header/header.js"></script>
+  <script src="./components/hero/hero.js"></script>
+  <script src="./components/consulting/consulting.js"></script>
+  <script src="./components/footer/footer.js"></script>
+
+  <script>
+    // Laden der Consulting-Komponente
+    fetch('./components/consulting/consulting.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('consulting-container').innerHTML = html;
+        
+        // Laden der Daten
+        return fetch('./components/consulting/text.json');
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Laden der globalen Daten für Header/Footer
+        return fetch('./data/text.json').then(response => response.json())
+          .then(globalData => ({...globalData, ...data}));
+      })
+      .then(data => {
+        // Initialisiere alle Komponenten mit den Daten
+        window.currentData = data;
+        
+        // Lade Text in alle data-field Elemente
+        loadDataFields(data);
+        
+        // Initialisiere spezifische Funktionen
+        if (window.initHeader) window.initHeader(data);
+        if (window.initHero) window.initHero(data);
+        if (window.initConsulting) window.initConsulting(data);
+        if (window.initFooter) window.initFooter(data);
+      })
+      .catch(error => console.error('Fehler beim Laden der Consulting-Seite:', error));
+
+    // Funktion um alle data-field Elemente zu füllen
+    function loadDataFields(data) {
+      const elements = document.querySelectorAll('[data-field]');
+      elements.forEach(element => {
+        const fieldPath = element.getAttribute('data-field');
+        const value = getNestedValue(data, fieldPath);
+        if (value !== undefined) {
+          element.textContent = value;
+        }
+      });
+    }
+
+    // Hilfsfunktion um verschachtelte Objekt-Werte zu erhalten
+    function getNestedValue(obj, path) {
+      return path.split('.').reduce((current, prop) => current?.[prop], obj);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+.consulting {
+  width: 100%;
+}
+
+/* ========================================
+   CONSULTING INTRO SECTION
+   ======================================== */
+
+.consulting-intro-section {
+  padding: 5rem 0 3rem 0;
+  margin-top: 2rem;
+  background: linear-gradient(135deg, var(--color-light-100) 0%, var(--color-light-200) 100%);
+}
+
+.consulting-heading {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--color-gray-900);
+}
+
+.consulting-subheading {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.consulting-intro-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--color-gray-900);
+}
+
+/* ========================================
+   OFFERINGS SECTION
+   ======================================== */
+
+.consulting-offerings-section {
+  padding: 5rem 0;
+  background: var(--color-light-50);
+}
+
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+.offering-card {
+  background: white;
+  border-radius: 8px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 12px var(--color-black-08);
+  transition: all 0.3s ease;
+}
+
+.offering-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--color-black-12);
+}
+
+.offering-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  opacity: 0.3;
+}
+
+.offering-card h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin-bottom: 0.8rem;
+}
+
+.offering-goal {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.offering-items {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+}
+
+.offering-items li {
+  list-style: none;
+  padding-left: 1.5rem;
+  color: var(--color-gray-700);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  position: relative;
+}
+
+.offering-items li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* ========================================
+   CLOSING SECTION
+   ======================================== */
+
+.consulting-closing-section {
+  padding: 3rem 0;
+  background: var(--color-light-100);
+  text-align: center;
+}
+
+.consulting-closing-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-gray-900);
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+
+.consulting-cta-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: var(--color-light-50);
+  text-align: center;
+}
+
+.consulting-cta-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--color-light-50);
+}
+
+.consulting-cta-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: var(--color-light-50);
+}
+
+.consulting-cta-button {
+  background-color: var(--color-light-50);
+  color: var(--color-primary);
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 20px var(--color-black-20);
+}
+
+.consulting-cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px var(--color-black-30);
+  color: var(--color-primary-dark);
+}
+
+.consulting-cta-button:active {
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .consulting-heading {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .consulting-subheading {
+    font-size: 1.2rem;
+  }
+
+  .consulting-intro-text {
+    font-size: 1rem;
+  }
+
+  .offerings-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .offering-card {
+    padding: 1.5rem;
+  }
+
+  .offering-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .offering-number {
+    font-size: 2rem;
+  }
+
+  .consulting-cta-heading {
+    font-size: 1.8rem;
+  }
+
+  .consulting-cta-description {
+    font-size: 1rem;
+  }
+}
