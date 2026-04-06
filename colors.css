@@ -4,32 +4,32 @@
 
 :root {
   /* Primary Colors */
-  --color-primary: #53687C;
-  --color-primary-dark: #53687C;
-  --color-primary-light: #f6ebc8;
+  --color-primary: #a32b33;
+  --color-primary-dark: #8f0f17;
+  --color-primary-light: #86393f;
 
   /* Neutral - Dark */
-  --color-dark-900: #1a1a1a;
-  --color-dark-800: #2d2d2d;
-  --color-dark-700: #444;
+  --color-dark-900: #0f0b0c;
+  --color-dark-800: #1b1315;
+  --color-dark-700: #35282b;
 
   /* Neutral - Light */
   --color-light-50: #fff;
-  --color-light-100: #f8f9fa;
-  --color-light-200: #f0f0f0;
+  --color-light-100: #f7f2f3;
+  --color-light-200: #efe5e7;
 
   /* Neutral - Gray */
-  --color-gray-900: #333;
-  --color-gray-700: #666;
-  --color-gray-500: #999;
-  --color-gray-400: #bbb;
-  --color-gray-300: #ddd;
+  --color-gray-900: #20181a;
+  --color-gray-700: #4f4347;
+  --color-gray-500: #84767b;
+  --color-gray-400: #b7a9ae;
+  --color-gray-300: #dacfd2;
 
   /* Semi-transparent Variants */
-  --color-primary-10: rgba(246, 235, 200, 0.1);
-  --color-primary-15: rgba(246, 235, 200, 0.15);
-  --color-primary-20: rgba(246, 235, 200, 0.2);
-  --color-primary-30: rgba(246, 235, 200, 0.3);
+  --color-primary-10: rgba(193, 18, 31, 0.1);
+  --color-primary-15: rgba(193, 18, 31, 0.15);
+  --color-primary-20: rgba(193, 18, 31, 0.2);
+  --color-primary-30: rgba(193, 18, 31, 0.3);
   --color-black-08: rgba(0, 0, 0, 0.08);
   --color-black-12: rgba(0, 0, 0, 0.12);
   --color-black-15: rgba(0, 0, 0, 0.15);

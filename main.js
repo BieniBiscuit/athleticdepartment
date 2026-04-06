@@ -65,6 +65,41 @@ function getNestedValue(obj, path) {
   return path.split('.').reduce((current, prop) => current?.[prop], obj);
 }
 
+function getHeaderOffset() {
+  const header = document.querySelector('.header');
+  return header ? header.offsetHeight + 16 : 0;
+}
+
+function scrollToHashTarget(hash, behavior = 'smooth') {
+  if (!hash) {
+    return;
+  }
+
+  const target = document.querySelector(hash);
+  if (!target) {
+    return;
+  }
+
+  const targetPosition = target.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
+
+  window.scrollTo({
+    top: Math.max(targetPosition, 0),
+    behavior
+  });
+}
+
+function handleInitialHashNavigation() {
+  if (!window.location.hash) {
+    return;
+  }
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      scrollToHashTarget(window.location.hash, 'auto');
+    });
+  });
+}
+
 /**
  * Initialisiert alle Komponenten
  */
@@ -111,6 +146,9 @@ async function initializeApp() {
   // 4. Globale Event Listener initialisieren
   setupGlobalListeners();
 
+  // 5. Hash-Navigation nach Initialisierung korrigieren
+  handleInitialHashNavigation();
+
   console.log('✅ Anwendung erfolgreich geladen');
 }
 
@@ -129,6 +167,10 @@ function setupGlobalListeners() {
       link.setAttribute('target', '_blank');
       link.setAttribute('rel', 'noopener noreferrer');
     }
+  });
+
+  window.addEventListener('hashchange', () => {
+    scrollToHashTarget(window.location.hash);
   });
 }
 

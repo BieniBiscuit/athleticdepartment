@@ -91,9 +91,6 @@ function initBody(data) {
       buttons.forEach((btn, idx) => {
         btn.classList.toggle('active', idx === index);
       });
-
-      // Reset auto-rotate timer
-      resetAutoRotate();
     }
 
     // Auto-rotate Funktion
@@ -127,11 +124,18 @@ function initBody(data) {
       button.addEventListener('click', () => {
         const index = parseInt(button.getAttribute('data-index'));
         displayTestimonial(index);
+
+        // Auto-rotate dauerhaft stoppen, sobald ein User manuell auswaehlt.
+        if (autoRotateInterval) {
+          clearInterval(autoRotateInterval);
+          autoRotateInterval = null;
+        }
       });
     });
 
     // Display the first testimonial on load and start auto-rotate
     displayTestimonial(0);
+    resetAutoRotate();
   } else {
     console.warn('⚠️ Testimonials-Elemente nicht gefunden:', {
       quoteDisplay: !!quoteDisplay,
