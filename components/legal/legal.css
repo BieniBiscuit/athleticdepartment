@@ -1,0 +1,127 @@
+.legal-page {
+  width: 100%;
+  background: var(--color-light-100);
+  padding: 5rem 0 3rem;
+  margin-top: 2rem;
+}
+
+.legal-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.legal-title {
+  font-size: 2.5rem;
+  color: var(--color-gray-900);
+  margin-bottom: 0.8rem;
+  text-align: left;
+}
+
+.legal-subtitle {
+  color: var(--color-gray-700);
+  margin-bottom: 2rem;
+}
+
+.legal-content {
+  background: var(--color-light-50);
+  border: 1px solid var(--color-light-200);
+  box-shadow: 0 10px 24px var(--color-black-08);
+  border-radius: 8px;
+  padding: 1.5rem 1.6rem;
+}
+
+.legal-rich-text {
+  line-height: 1.75;
+  color: var(--color-gray-900);
+  font-family: 'Sora', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+}
+
+.legal-rich-text p {
+  margin: 0 0 1rem;
+}
+
+.legal-rich-text p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-section-title {
+  margin: 1.5rem 0 0.8rem;
+  font-size: 1.25rem;
+  color: var(--color-gray-900);
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-family: 'Sora', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+}
+
+.legal-section-title:first-child {
+  margin-top: 0;
+}
+
+.legal-numbered-title {
+  margin: 2rem 0 0.9rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-light-200);
+  font-size: 1.4rem;
+  color: var(--color-gray-900);
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-family: 'Sora', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+}
+
+.legal-numbered-title:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.legal-subsection-title {
+  margin: 1rem 0 0.45rem;
+  font-size: 1.02rem;
+  color: var(--color-gray-900);
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-family: 'Sora', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700;
+}
+
+.legal-body-text {
+  color: var(--color-gray-700);
+  text-wrap: pretty;
+}
+
+.legal-rich-text a {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  .legal-page {
+    padding: 3.5rem 0 2rem;
+  }
+
+  .legal-title {
+    font-size: 2rem;
+  }
+
+  .legal-content {
+    padding: 1rem;
+  }
+
+  .legal-section-title {
+    font-size: 1.1rem;
+  }
+
+  .legal-numbered-title {
+    font-size: 1.2rem;
+  }
+
+  .legal-subsection-title {
+    font-size: 1rem;
+  }
+}

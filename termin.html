@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Trainingspläne für Athletiktraining - systematisch, praxisnah und individuell für jedes Leistungsniveau.">
-  <meta name="keywords" content="Trainingsplan, Athletiktraining, Krafttraining, Hannover, Coaching">
-  <meta name="theme-color" content="#53687C">
-  <title>Trainingspläne | Athletik Dept</title>
+  <meta name="description" content="Terminvereinbarung mit Athletik Dept">
+  <meta name="theme-color" content="#a32b33">
+  <title>Termin vereinbaren | Athletik Dept</title>
 
   <link rel="stylesheet" href="./global.css">
   <link rel="stylesheet" href="./components/header/header.css">
-  <link rel="stylesheet" href="./components/trainingsplan/trainingsplan.css">
+  <link rel="stylesheet" href="./components/staticpage/staticpage.css">
   <link rel="stylesheet" href="./components/footer/footer.css">
-
   <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -32,18 +30,14 @@
         <span class="menu-icon"></span>
       </button>
       <nav class="header-nav" id="headerNav">
-        <ul class="nav-list" data-field="nav.items">
-          <!-- Dynamisch gefuellt von JavaScript -->
-        </ul>
+        <ul class="nav-list" data-field="nav.items"></ul>
       </nav>
     </div>
   </header>
 
-  <div id="main">
-    <div id="trainingsplan-container">
-      <!-- Dynamisch geladen -->
-    </div>
-  </div>
+  <main id="main">
+    <div id="static-container"></div>
+  </main>
 
   <footer class="footer">
     <div class="footer-content">
@@ -57,16 +51,12 @@
 
       <div class="footer-section">
         <h4>Links</h4>
-        <ul class="footer-links" data-field="footer.links.main">
-          <!-- Dynamisch gefuellt -->
-        </ul>
+        <ul class="footer-links" data-field="footer.links.main"></ul>
       </div>
 
       <div class="footer-section">
         <h4>Legal</h4>
-        <ul class="footer-links" data-field="footer.links.legal">
-          <!-- Dynamisch gefuellt -->
-        </ul>
+        <ul class="footer-links" data-field="footer.links.legal"></ul>
       </div>
 
       <div class="footer-section">
@@ -80,32 +70,44 @@
     </div>
   </footer>
 
-  <script src="./main.js"></script>
   <script src="./components/header/header.js"></script>
-  <script src="./components/trainingsplan/trainingsplan.js"></script>
+  <script src="./components/staticpage/staticpage.js"></script>
   <script src="./components/footer/footer.js"></script>
 
   <script>
-    fetch('./components/trainingsplan/trainingsplan.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('trainingsplan-container').innerHTML = html;
-        return fetch('./components/trainingsplan/text.json');
-      })
-      .then(response => response.json())
-      .then(data => {
-        return fetch('./data/text.json').then(response => response.json())
-          .then(globalData => ({ ...globalData, ...data }));
-      })
-      .then(data => {
-        window.currentData = data;
-        loadDataFields(data);
+    const PAGE_KEY = 'termin';
 
-        if (window.initHeader) window.initHeader(data);
-        if (window.initTrainingsplan) window.initTrainingsplan(data);
-        if (window.initFooter) window.initFooter(data);
+    Promise.all([
+      fetch('./components/staticpage/staticpage.html').then(response => response.text()),
+      fetch('./data/text.json').then(response => response.json()),
+      fetch('./components/staticpage/text.json').then(response => response.json())
+    ])
+      .then(([staticHtml, data, staticData]) => {
+        document.getElementById('static-container').innerHTML = staticHtml;
+
+        const currentPage = staticData.static.pages[PAGE_KEY];
+        const mergedData = {
+          ...data,
+          static: {
+            ...staticData.static,
+            current: currentPage
+          }
+        };
+
+        if (window.initStaticPage) {
+          window.initStaticPage(mergedData, PAGE_KEY);
+        }
+
+        const titleElement = document.querySelector('.static-title');
+        if (titleElement) {
+          document.title = `${titleElement.textContent} | Athletik Dept`;
+        }
+
+        loadDataFields(mergedData);
+        if (window.initHeader) window.initHeader(mergedData);
+        if (window.initFooter) window.initFooter(mergedData);
       })
-      .catch(error => console.error('Fehler beim Laden der Trainingsplan-Seite:', error));
+      .catch(error => console.error('Fehler beim Laden der Termin-Seite:', error));
 
     function loadDataFields(data) {
       const elements = document.querySelectorAll('[data-field]');

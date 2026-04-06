@@ -1,0 +1,16 @@
+{
+    "static":  {
+        "pages":  {
+            "termin":  {
+                        "title":  "Termin vereinbaren",
+                        "subtitle":  "Buche ein unverbindliches Kennenlerngespraech.",
+                        "content":  "Lass  uns  ins Gespräch  kommen.\r\n\r\nOb du als Einzelathlet durchstarten willst, dein Team weiterentwickeln möchtest oder auf der Suche nach einer fundierten Analyse bist – der erste Schritt ist einfach: ein Gespräch. In einem unverbindlichen Kennenlernen sprechen wir über deine Ziele, Herausforderungen und schauen gemeinsam, wie wir dich bestmöglich unterstützen können.\r\n\r\nWähle jetzt einen Termin, der für dich passt – wir freuen uns auf dich."
+                    },
+            "blog":  {
+                        "title":  "Blog",
+                        "subtitle":  "Fachartikel, Updates und Einblicke.",
+                        "content":  "Unsere Blogbeitraege sind aktuell in Vorbereitung.\n\nIn Kuerze findest du hier praxisnahe Inhalte zu Athletiktraining, Leistungsdiagnostik und Performance Coaching."
+                    }
+        }
+    }
+}

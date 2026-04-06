@@ -31,6 +31,21 @@
   & .footer-company {
     color: var(--color-light-50) !important;
     font-size: 1.5rem;
+    margin-top: 0.75rem;
+  }
+
+  & .footer-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  & .footer-logo-image {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 6px 14px var(--color-black-20);
   }
 
   & .footer-description {
@@ -89,6 +104,10 @@
 
     & .footer-section {
       text-align: center;
+    }
+
+    & .footer-brand {
+      justify-content: center;
     }
 
     & .footer-links {

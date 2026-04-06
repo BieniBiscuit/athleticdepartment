@@ -196,14 +196,17 @@
     "description": "Athletiktraining, Performance Coaching und Leistungsdiagnostik in Hannover.",
     "links": {
       "main": [
-        { "label": "Home", "href": "#/" },
-        { "label": "Services", "href": "#services" },
-        { "label": "Team", "href": "#team" },
-        { "label": "Kontakt", "href": "#kontakt" }
+        { "label": "Home", "href": "./index.html" },
+        { "label": "Services", "href": "./index.html#services" },
+        { "label": "Team", "href": "./index.html#team" },
+        { "label": "Kontakt", "href": "./index.html#kontakt" },
+        { "label": "Termin", "href": "./termin.html" },
+        { "label": "Blog", "href": "./blog.html" }
       ],
       "legal": [
-        { "label": "Impressum", "href": "#impressum" },
-        { "label": "Datenschutz", "href": "#datenschutz" }
+        { "label": "Impressum", "href": "./impressum.html" },
+        { "label": "Datenschutz", "href": "./datenschutz.html" },
+        { "label": "AGB", "href": "./agb.html" }
       ]
     },
     "contact": {
