@@ -36,14 +36,14 @@
         "subtitle": "systematisch. praxisnah. individuell.",
         "description": "Unsere Programme basieren auf einem durchdachten System – strukturiert, zielgerichtet und sportartspezifisch. Du kannst mit erprobten Plänen arbeiten oder dir deinen Trainingsplan individuell auf dich und deine Ziele zuschneiden lassen. Ob Schnelligkeit, Kraft, Mobilität oder Belastungssteuerung: Wir liefern dir die Grundlage, damit dein Training Wirkung zeigt.",
         "link": "Erfahre mehr über unsere Trainingspläne",
-        "href": "./trainingsplan.html"
+        "href": "./components/trainingsplan/trainingsplan.html"
       },
       {
         "title": "Consulting",
         "subtitle": "für Coaches, Teams und Strukturen",
         "description": "Du willst dein Training ganzheitlich aufstellen oder ein Athletiksystem im Verein etablieren? Wir unterstützen dich bei der Planung, Integration und Weiterentwicklung deiner Trainingskonzepte. Von Periodisierung bis zu Tests, von Jugend bis Herrenbereich – wir denken Athletik strategisch und nachhaltig. Unsere Erfahrung hilft dir, Strukturen aufzubauen, die Leistung fördern – langfristig.",
         "link": "Erfahre mehr über unser Beratungs-Angebot",
-        "href": "./consulting.html"
+        "href": "./pages/services/consulting.html"
       },
       {
         "title": "Einzel- & Teamcoaching",

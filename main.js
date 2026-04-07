@@ -41,6 +41,31 @@ async function loadData() {
 }
 
 /**
+ * Laedt das Body-HTML aus der Komponente und injiziert es in die Startseite
+ */
+async function loadBodyComponentHtml() {
+  const mountPoint = document.querySelector('#bodyComponent');
+
+  if (!mountPoint) {
+    return true;
+  }
+
+  try {
+    const response = await fetch('./components/body/body.html');
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    mountPoint.innerHTML = await response.text();
+    return true;
+  } catch (error) {
+    console.error('✗ Fehler beim Laden von body.html:', error);
+    return false;
+  }
+}
+
+/**
  * Füllt dynamische Inhalte basierend auf data-field Attributen
  */
 function populateDynamicContent() {
@@ -113,10 +138,17 @@ async function initializeApp() {
     return;
   }
 
-  // 2. Dynamische Inhalte füllen
+  // 2. Body-Komponente in die Startseite laden
+  const bodyHtmlLoaded = await loadBodyComponentHtml();
+  if (!bodyHtmlLoaded) {
+    console.error('✗ Kritischer Fehler: Body-Komponente konnte nicht geladen werden');
+    return;
+  }
+
+  // 3. Dynamische Inhalte fuellen
   populateDynamicContent();
 
-  // 3. Komponenten initialisieren
+  // 4. Komponenten initialisieren
   console.log('📦 Komponenten werden initialisiert...');
 
   // Header
@@ -143,10 +175,10 @@ async function initializeApp() {
     console.log('✓ Footer initialisiert');
   }
 
-  // 4. Globale Event Listener initialisieren
+  // 5. Globale Event Listener initialisieren
   setupGlobalListeners();
 
-  // 5. Hash-Navigation nach Initialisierung korrigieren
+  // 6. Hash-Navigation nach Initialisierung korrigieren
   handleInitialHashNavigation();
 
   console.log('✅ Anwendung erfolgreich geladen');

@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Allgemeine Geschaeftsbedingungen der Athletik Dept Webseite">
+  <meta name="description" content="Impressum der Athletik Dept Webseite">
   <meta name="theme-color" content="#a32b33">
-  <title>AGB | Athletik Dept</title>
+  <title>Impressum | Athletik Dept</title>
+  <base href="../../">
 
   <link rel="stylesheet" href="./global.css">
   <link rel="stylesheet" href="./components/header/header.css">
@@ -75,7 +76,7 @@
   <script src="./components/footer/footer.js"></script>
 
   <script>
-    const PAGE_KEY = 'agb';
+    const PAGE_KEY = 'impressum';
 
     Promise.all([
       fetch('./components/legal/legal.html').then(response => response.text()),
@@ -107,7 +108,7 @@
         if (window.initHeader) window.initHeader(mergedData);
         if (window.initFooter) window.initFooter(mergedData);
       })
-      .catch(error => console.error('Fehler beim Laden der AGB-Seite:', error));
+      .catch(error => console.error('Fehler beim Laden der Impressum-Seite:', error));
 
     function loadDataFields(data) {
       const elements = document.querySelectorAll('[data-field]');

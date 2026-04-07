@@ -8,13 +8,13 @@
         { "label": "Services", "href": "./index.html#services" },
         { "label": "Team", "href": "./index.html#team" },
         { "label": "Kontakt", "href": "./index.html#kontakt" },
-        { "label": "Termin", "href": "./termin.html" },
+        { "label": "Termin", "href": "./components/staticpage/termin.html" },
         { "label": "Blog", "href": "./blog.html" }
       ],
       "legal": [
-        { "label": "Impressum", "href": "./impressum.html" },
-        { "label": "Datenschutz", "href": "./datenschutz.html" },
-        { "label": "AGB", "href": "./agb.html" }
+        { "label": "Impressum", "href": "./components/legal/impressum.html" },
+        { "label": "Datenschutz", "href": "./components/legal/datenschutz.html" },
+        { "label": "AGB", "href": "./components/legal/agb.html" }
       ]
     },
     "contact": {

@@ -8,8 +8,8 @@
         "href": "./index.html#services",
         "children": [
           { "label": "Überblick", "href": "./index.html#services" },
-          { "label": "Consulting", "href": "./consulting.html" },
-          { "label": "Trainingspläne", "href": "./trainingsplan.html" }
+          { "label": "Consulting", "href": "./pages/services/consulting.html" },
+          { "label": "Trainingspläne", "href": "./components/trainingsplan/trainingsplan.html" }
         ]
       },
       { "label": "Ablauf", "href": "./index.html#ablauf" },

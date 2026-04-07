@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Terminvereinbarung mit Athletik Dept">
+  <meta name="description" content="Datenschutzerklaerung der Athletik Dept Webseite">
   <meta name="theme-color" content="#a32b33">
-  <title>Termin vereinbaren | Athletik Dept</title>
+  <title>Datenschutz | Athletik Dept</title>
+  <base href="../../">
 
   <link rel="stylesheet" href="./global.css">
   <link rel="stylesheet" href="./components/header/header.css">
-  <link rel="stylesheet" href="./components/staticpage/staticpage.css">
+  <link rel="stylesheet" href="./components/legal/legal.css">
   <link rel="stylesheet" href="./components/footer/footer.css">
   <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
 </head>
@@ -36,7 +37,7 @@
   </header>
 
   <main id="main">
-    <div id="static-container"></div>
+    <div id="legal-container"></div>
   </main>
 
   <footer class="footer">
@@ -71,34 +72,34 @@
   </footer>
 
   <script src="./components/header/header.js"></script>
-  <script src="./components/staticpage/staticpage.js"></script>
+  <script src="./components/legal/legal.js"></script>
   <script src="./components/footer/footer.js"></script>
 
   <script>
-    const PAGE_KEY = 'termin';
+    const PAGE_KEY = 'datenschutz';
 
     Promise.all([
-      fetch('./components/staticpage/staticpage.html').then(response => response.text()),
+      fetch('./components/legal/legal.html').then(response => response.text()),
       fetch('./data/text.json').then(response => response.json()),
-      fetch('./components/staticpage/text.json').then(response => response.json())
+      fetch('./components/legal/text.json').then(response => response.json())
     ])
-      .then(([staticHtml, data, staticData]) => {
-        document.getElementById('static-container').innerHTML = staticHtml;
+      .then(([legalHtml, data, legalData]) => {
+        document.getElementById('legal-container').innerHTML = legalHtml;
 
-        const currentPage = staticData.static.pages[PAGE_KEY];
+        const currentPage = legalData.legal.pages[PAGE_KEY];
         const mergedData = {
           ...data,
-          static: {
-            ...staticData.static,
+          legal: {
+            ...legalData.legal,
             current: currentPage
           }
         };
 
-        if (window.initStaticPage) {
-          window.initStaticPage(mergedData, PAGE_KEY);
+        if (window.initLegalPage) {
+          window.initLegalPage(mergedData, PAGE_KEY);
         }
 
-        const titleElement = document.querySelector('.static-title');
+        const titleElement = document.querySelector('.legal-title');
         if (titleElement) {
           document.title = `${titleElement.textContent} | Athletik Dept`;
         }
@@ -107,7 +108,7 @@
         if (window.initHeader) window.initHeader(mergedData);
         if (window.initFooter) window.initFooter(mergedData);
       })
-      .catch(error => console.error('Fehler beim Laden der Termin-Seite:', error));
+      .catch(error => console.error('Fehler beim Laden der Datenschutz-Seite:', error));
 
     function loadDataFields(data) {
       const elements = document.querySelectorAll('[data-field]');

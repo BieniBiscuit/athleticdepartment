@@ -49,8 +49,8 @@ function initBody(data) {
       .map(service => {
         const serviceKey = service.title.toLowerCase();
         const fallbackLinks = {
-          trainingspläne: './trainingsplan.html',
-          consulting: './consulting.html'
+          trainingspläne: './components/trainingsplan/trainingsplan.html',
+          consulting: './pages/services/consulting.html'
         };
         const href = service.href || fallbackLinks[serviceKey] || '#kontakt';
 

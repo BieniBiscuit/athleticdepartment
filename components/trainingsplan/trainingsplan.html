@@ -1,36 +1,128 @@
-<main class="trainingsplan">
-  <section class="trainingsplan-intro-section">
-    <div class="container">
-      <h1 class="trainingsplan-heading" data-field="heading">Trainingspläne</h1>
-      <p class="trainingsplan-subheading" data-field="subheading">Systematisch. Praxisnah. Individuell.</p>
-      <p class="trainingsplan-intro-text" data-field="intro"></p>
-    </div>
-  </section>
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TrainingsplÃ¤ne fÃ¼r Athletiktraining - systematisch, praxisnah und individuell fÃ¼r jedes Leistungsniveau.">
+  <meta name="keywords" content="Trainingsplan, Athletiktraining, Krafttraining, Hannover, Coaching">
+  <meta name="theme-color" content="#53687C">
+  <title>TrainingsplÃ¤ne | Athletik Dept</title>
+  <base href="../../">
 
-  <section class="trainingsplan-plans-section">
-    <div class="container">
-      <div class="plans-grid" data-field="plans">
-        <!-- Dynamisch gefuellt -->
+  <link rel="stylesheet" href="./global.css">
+  <link rel="stylesheet" href="./components/header/header.css">
+  <link rel="stylesheet" href="./components/trainingsplan/trainingsplan.css">
+  <link rel="stylesheet" href="./components/footer/footer.css">
+
+  <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <a href="#main" class="skip-to-main">Zum Hauptinhalt springen</a>
+
+  <header class="header">
+    <div class="header-container">
+      <div class="header-logo">
+        <a href="./index.html" class="logo-link">
+          <img src="./assets/images/logo+weiß.webp" alt="Athletik Dept Logo" class="logo-image">
+          <span class="logo-text" data-field="nav.logo">Athletik Dept</span>
+        </a>
+      </div>
+      <button class="header-menu-toggle" id="menuToggle" aria-label="Navigation toggle" aria-expanded="false">
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+      </button>
+      <nav class="header-nav" id="headerNav">
+        <ul class="nav-list" data-field="nav.items">
+          <!-- Dynamisch gefuellt von JavaScript -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="main">
+    <div id="trainingsplan-container">
+      <!-- Dynamisch geladen -->
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-brand">
+          <img src="./assets/images/logo+weiß.webp" alt="Athletik Dept Logo" class="footer-logo-image">
+        </div>
+        <h3 class="footer-company" data-field="footer.companyName">Athletik Dept</h3>
+        <p class="footer-description" data-field="footer.description"></p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Links</h4>
+        <ul class="footer-links" data-field="footer.links.main">
+          <!-- Dynamisch gefuellt -->
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul class="footer-links" data-field="footer.links.legal">
+          <!-- Dynamisch gefuellt -->
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4 data-field="footer.contact.social"></h4>
+        <p class="footer-contact" data-field="footer.contact.city"></p>
       </div>
     </div>
-  </section>
 
-  <section class="trainingsplan-bundles-section">
-    <div class="container">
-      <h2 class="section-title" data-field="bundles_heading">Zusatzpakete & Bundles</h2>
-      <p class="section-description" data-field="bundles_intro"></p>
-      <div class="bundle-grid" data-field="bundles">
-        <!-- Dynamisch gefuellt -->
-      </div>
+    <div class="footer-bottom">
+      <p class="footer-copyright" data-field="footer.copyright"></p>
     </div>
-  </section>
+  </footer>
 
-  <section class="trainingsplan-addon-section">
-    <div class="container">
-      <h2 class="section-title" data-field="addon_heading">Form-Check-Service (Add-on)</h2>
-      <p class="addon-text" data-field="addon_description"></p>
-      <p class="addon-note" data-field="addon_note"></p>
-      <div class="addon-actions" data-field="addon_button"></div>
-    </div>
-  </section>
-</main>
+  <script src="./main.js"></script>
+  <script src="./components/header/header.js"></script>
+  <script src="./components/trainingsplan/trainingsplan.js"></script>
+  <script src="./components/footer/footer.js"></script>
+
+  <script>
+    fetch('./components/trainingsplan/trainingsplan-content.html')
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('trainingsplan-container').innerHTML = html;
+        return fetch('./components/trainingsplan/text.json');
+      })
+      .then(response => response.json())
+      .then(data => {
+        return fetch('./data/text.json').then(response => response.json())
+          .then(globalData => ({ ...globalData, ...data }));
+      })
+      .then(data => {
+        window.currentData = data;
+        loadDataFields(data);
+
+        if (window.initHeader) window.initHeader(data);
+        if (window.initTrainingsplan) window.initTrainingsplan(data);
+        if (window.initFooter) window.initFooter(data);
+      })
+      .catch(error => console.error('Fehler beim Laden der Trainingsplan-Seite:', error));
+
+    function loadDataFields(data) {
+      const elements = document.querySelectorAll('[data-field]');
+      elements.forEach(element => {
+        const fieldPath = element.getAttribute('data-field');
+        const value = getNestedValue(data, fieldPath);
+        if (value !== undefined) {
+          element.textContent = value;
+        }
+      });
+    }
+
+    function getNestedValue(obj, path) {
+      return path.split('.').reduce((current, prop) => current?.[prop], obj);
+    }
+  </script>
+</body>
+</html>
+
