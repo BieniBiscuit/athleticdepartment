@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Consulting & Beratung für Athletiktraining - Strategische Begleitung für Teams und Vereine in Hannover">
+  <meta name="description" content="Consulting & Beratung fÃ¼r Athletiktraining - Strategische Begleitung fÃ¼r Teams und Vereine in Hannover">
   <meta name="keywords" content="Consulting, Athletiktraining, Beratung, Hannover, Teamtraining">
   <meta name="theme-color" content="#ff6b35">
   <title>Consulting & Beratung | Athletik Dept</title>
@@ -19,7 +19,7 @@
   <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-  <!-- Skip Link für Accessibility -->
+  <!-- Skip Link fÃ¼r Accessibility -->
   <a href="#main" class="skip-to-main">Zum Hauptinhalt springen</a>
 
   <!-- ===================================
@@ -29,7 +29,7 @@
     <div class="header-container">
       <div class="header-logo">
         <a href="./index.html" class="logo-link">
-          <img src="./assets/images/logo.jpg" alt="Athletik Dept Logo" class="logo-image">
+          <img src="./assets/images/logo+weiß.webp" alt="Athletik Dept Logo" class="logo-image">
           <span class="logo-text" data-field="nav.logo">Athletik Dept</span>
         </a>
       </div>
@@ -40,7 +40,7 @@
       </button>
       <nav class="header-nav" id="headerNav">
         <ul class="nav-list" data-field="nav.items">
-          <!-- Dynamisch gefüllt von JavaScript -->
+          <!-- Dynamisch gefÃ¼llt von JavaScript -->
         </ul>
       </nav>
     </div>
@@ -63,7 +63,7 @@
     <div class="footer-content">
       <div class="footer-section">
         <div class="footer-brand">
-          <img src="./assets/images/logo.jpg" alt="Athletik Dept Logo" class="footer-logo-image">
+          <img src="./assets/images/logo+weiß.webp" alt="Athletik Dept Logo" class="footer-logo-image">
         </div>
         <h3 class="footer-company" data-field="footer.companyName">Athletik Dept</h3>
         <p class="footer-description" data-field="footer.description"></p>
@@ -72,14 +72,14 @@
       <div class="footer-section">
         <h4>Links</h4>
         <ul class="footer-links" data-field="footer.links.main">
-          <!-- Dynamisch gefüllt -->
+          <!-- Dynamisch gefÃ¼llt -->
         </ul>
       </div>
 
       <div class="footer-section">
         <h4>Legal</h4>
         <ul class="footer-links" data-field="footer.links.legal">
-          <!-- Dynamisch gefüllt -->
+          <!-- Dynamisch gefÃ¼llt -->
         </ul>
       </div>
 
@@ -113,7 +113,7 @@
       })
       .then(response => response.json())
       .then(data => {
-        // Laden der globalen Daten für Header/Footer
+        // Laden der globalen Daten fÃ¼r Header/Footer
         return fetch('./data/text.json').then(response => response.json())
           .then(globalData => ({...globalData, ...data}));
       })
@@ -132,7 +132,7 @@
       })
       .catch(error => console.error('Fehler beim Laden der Consulting-Seite:', error));
 
-    // Funktion um alle data-field Elemente zu füllen
+    // Funktion um alle data-field Elemente zu fÃ¼llen
     function loadDataFields(data) {
       const elements = document.querySelectorAll('[data-field]');
       elements.forEach(element => {
@@ -151,3 +151,4 @@
   </script>
 </body>
 </html>
+

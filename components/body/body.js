@@ -1,4 +1,31 @@
 function initBody(data) {
+  function equalizeProcessStepHeights() {
+    const diagnosticsItems = document.querySelectorAll('[data-field="process.diagnostics"] .process-step');
+    const analysisItems = document.querySelectorAll('[data-field="process.analysis"] .process-step');
+    const maxLength = Math.max(diagnosticsItems.length, analysisItems.length);
+
+    diagnosticsItems.forEach(item => {
+      item.style.minHeight = '';
+    });
+
+    analysisItems.forEach(item => {
+      item.style.minHeight = '';
+    });
+
+    for (let index = 0; index < maxLength; index += 1) {
+      const diagnosticsItem = diagnosticsItems[index];
+      const analysisItem = analysisItems[index];
+
+      if (!diagnosticsItem || !analysisItem) {
+        continue;
+      }
+
+      const maxHeight = Math.max(diagnosticsItem.offsetHeight, analysisItem.offsetHeight);
+      diagnosticsItem.style.minHeight = `${maxHeight}px`;
+      analysisItem.style.minHeight = `${maxHeight}px`;
+    }
+  }
+
   // Problems Grid
   const problemsGrid = document.querySelector('.problems-grid');
   if (problemsGrid && data.intro && data.intro.problems) {
@@ -71,14 +98,24 @@ function initBody(data) {
       .join('');
   }
 
+  equalizeProcessStepHeights();
+
+  if (!document.body.dataset.processResizeBound) {
+    window.addEventListener('resize', equalizeProcessStepHeights);
+    document.body.dataset.processResizeBound = 'true';
+  }
+
   // Testimonials - Interactive Display
   const quoteDisplay = document.querySelector('#testimonialQuote');
   const authorsContainer = document.querySelector('#testimonialsAuthors');
 
   if (quoteDisplay && authorsContainer && data.testimonials && data.testimonials.items) {
     const testimonials = data.testimonials.items;
+    const mobileMediaQuery = window.matchMedia('(max-width: 768px)');
+    const autoRotateDelay = 6000;
     let currentIndex = 0;
     let autoRotateInterval = null;
+    let userStoppedAutoRotate = false;
 
     // Funktion zum Anzeigen eines Zitats
     function displayTestimonial(index) {
@@ -99,14 +136,21 @@ function initBody(data) {
       displayTestimonial(nextIndex);
     }
 
-    // Auto-rotate Timer starten
-    function resetAutoRotate() {
-      // Alten Timer clearen
+    function stopAutoRotate() {
       if (autoRotateInterval) {
         clearInterval(autoRotateInterval);
+        autoRotateInterval = null;
       }
-      // Neuen Timer starten (2 Sekunden)
-      autoRotateInterval = setInterval(autoRotate, 2000);
+    }
+
+    function updateAutoRotateState() {
+      stopAutoRotate();
+
+      if (mobileMediaQuery.matches || userStoppedAutoRotate || testimonials.length < 2) {
+        return;
+      }
+
+      autoRotateInterval = setInterval(autoRotate, autoRotateDelay);
     }
 
     // erstelle die Autorenliste
@@ -125,17 +169,33 @@ function initBody(data) {
         const index = parseInt(button.getAttribute('data-index'));
         displayTestimonial(index);
 
-        // Auto-rotate dauerhaft stoppen, sobald ein User manuell auswaehlt.
-        if (autoRotateInterval) {
-          clearInterval(autoRotateInterval);
-          autoRotateInterval = null;
-        }
+        userStoppedAutoRotate = true;
+        stopAutoRotate();
       });
     });
 
+    quoteDisplay.addEventListener('click', () => {
+      userStoppedAutoRotate = true;
+      stopAutoRotate();
+    });
+
+    if (!authorsContainer.dataset.testimonialMediaBound) {
+      const handleMediaChange = () => {
+        updateAutoRotateState();
+      };
+
+      if (typeof mobileMediaQuery.addEventListener === 'function') {
+        mobileMediaQuery.addEventListener('change', handleMediaChange);
+      } else if (typeof mobileMediaQuery.addListener === 'function') {
+        mobileMediaQuery.addListener(handleMediaChange);
+      }
+
+      authorsContainer.dataset.testimonialMediaBound = 'true';
+    }
+
     // Display the first testimonial on load and start auto-rotate
     displayTestimonial(0);
-    resetAutoRotate();
+    updateAutoRotateState();
   } else {
     console.warn('⚠️ Testimonials-Elemente nicht gefunden:', {
       quoteDisplay: !!quoteDisplay,
@@ -162,9 +222,20 @@ function initBody(data) {
     introCard.classList.add('active');
     benefitsCard.classList.remove('active');
 
-    // Add mouseenter listeners for card switching
+    const toggleButtons = document.querySelectorAll('.intro-card-toggle');
+
+    // Add interaction listeners for card switching
     introCard.addEventListener('mouseenter', () => setActiveCard('intro'));
     benefitsCard.addEventListener('mouseenter', () => setActiveCard('benefits'));
+    introCard.addEventListener('click', () => setActiveCard('intro'));
+    benefitsCard.addEventListener('click', () => setActiveCard('benefits'));
+
+    toggleButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        setActiveCard(button.dataset.cardTarget);
+      });
+    });
   }
 
   // Team Members
