@@ -4,14 +4,14 @@
 
 :root {
   /* Primary Colors */
-  --color-primary: #a32b33;
+  --color-primary: #a62626;
   --color-primary-dark: #8f0f17;
   --color-primary-light: #86393f;
 
   /* Neutral - Dark */
-  --color-dark-900: #0f0b0c;
-  --color-dark-800: #1b1315;
-  --color-dark-700: #35282b;
+  --color-dark-900: #1b1315;
+  --color-dark-800: #28282a;
+  --color-dark-700: #1c1c1d;
 
   /* Neutral - Light */
   --color-light-50: #fff;
@@ -19,7 +19,7 @@
   --color-light-200: #efe5e7;
 
   /* Neutral - Gray */
-  --color-gray-900: #20181a;
+  --color-gray-900: #28282a;
   --color-gray-700: #4f4347;
   --color-gray-500: #84767b;
   --color-gray-400: #b7a9ae;
