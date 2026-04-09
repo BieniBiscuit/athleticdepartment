@@ -722,6 +722,7 @@
     display: block;
   }
 
+  .intro-card .intro-card-toggle,
   .benefits-card .intro-card-toggle {
     display: none;
   }
